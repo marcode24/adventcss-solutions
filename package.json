@@ -1,20 +1,33 @@
 {
   "name": "adventcss-solutions",
   "version": "0.0.1",
+  "type": "module",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx,.astro .",
-    "lint:fix": "eslint --ext .js,.jsx,.ts,.tsx,.astro . --fix",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx,.astro . && npm run lint:scss",
+    "lint:fix": "eslint --ext .js,.jsx,.ts,.tsx,.astro . --fix && npm run lint:scss-fix",
     "lint:watch": "eslint --ext .js,.jsx,.ts,.tsx,.astro . --watch",
+    "lint:scss": "stylelint 'src/**/*.{astro,scss}'",
+    "lint:scss-fix": "stylelint 'src/**/*.{astro,scss}' --fix",
     "build-types": "tsc --noEmit --pretty"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,astro,svelte}": [
+      "npm run lint"
+    ],
+    "**/*.ts?(x)": [
+      "npm run build-types"
+    ]
   },
   "dependencies": {
     "@astrojs/check": "^0.3.1",
+    "@astrojs/svelte": "^4.0.4",
     "astro": "^3.5.5",
+    "svelte": "^4.2.7",
     "typescript": "^5.2.2"
   },
   "devDependencies": {
@@ -28,6 +41,12 @@
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "eslint-plugin-unused-imports": "^3.0.0",
     "husky": "^8.0.3",
-    "lint-staged": "^15.1.0"
+    "lint-staged": "^15.1.0",
+    "postcss-html": "^1.5.0",
+    "sass": "^1.69.5",
+    "stylelint": "^15.11.0",
+    "stylelint-config-html": "^1.1.0",
+    "stylelint-config-recommended-scss": "^13.1.0",
+    "stylelint-config-standard": "^34.0.0"
   }
 }

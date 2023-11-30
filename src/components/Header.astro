@@ -1,0 +1,60 @@
+<header>
+  <div class="container">
+    <h1>Advent CSS Solutions</h1>
+    <nav>
+      <ul>
+        <li><a href="/2022">2022</a></li>
+        <li><a href="/2023">2023</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  header {
+    background-color: var(--bg-color);
+    border-bottom: 1px solid #ccc;
+    height: 5rem;
+  }
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  header h1 {
+    font-size: var(--fs-3);
+    margin: 0;
+    color: var(--text-color-primary);
+  }
+
+  header nav {
+    margin-top: 1rem;
+  }
+
+  header nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  header nav ul li {
+    margin-right: 1rem;
+  }
+
+  header nav ul li:last-child {
+    margin-right: 0;
+  }
+
+  header nav ul li a {
+    color: var(--text-color-primary);
+    text-decoration: none;
+    font-size: var(--fs-5);
+  }
+
+  header nav ul li a:hover {
+    text-decoration: underline;
+  }
+</style>
