@@ -1,0 +1,28 @@
+---
+import Card from '@components/Card.astro';
+
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title='2022 solutions'>
+  <h3>2022 solutions</h3>
+  <Card
+    title='Challenge 1'
+    description='In this project, we’re creating a Pomodoro timer.'
+    href='/2022/challenge-01'
+    image='images/2022/day-1.svg'
+  />
+  <Card
+    title='Challenge 4'
+    description="In this project, we're going to create a computer keyboard."
+    href='/2022/challenge-04'
+    image='images/2022/day-4.svg'
+  />
+</Layout>
+
+<style>
+  h3 {
+    font-size: var(--fs-4);
+    margin-bottom: 1rem;
+  }
+</style>
