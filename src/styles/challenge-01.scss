@@ -1,7 +1,7 @@
 @font-face {
   font-family: "Bebasneue";
-  src: url("2022/challenge-01/fonts/bebasneue-book-webfont.woff2") format("woff2"),
-    url("2022/challenge-01/fonts/bebasneue-book-webfont.woff") format("woff");
+  src: url("/2022/challenge-01/assets/fonts/bebasneue-book-webfont.woff") format("woff2"),
+    url("/2022/challenge-01/assets/fonts/bebasneue-book-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -13,7 +13,7 @@ $red: #9d0000;
 
 .challenge {
   background-color: $background;
-  font-family: $font-family;
+  font-family: $font-family !important;
   font-size: 16px;
   height: calc(100vh - 7rem);
   display: flex;

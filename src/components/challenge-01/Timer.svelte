@@ -8,7 +8,6 @@
   let counterTemp = 0;
   let minutesInitial = minutes;
   let secondsInitial = seconds;
-  let startCounter;
   let stoped = true;
 
   let progressStyle = '';
@@ -29,7 +28,6 @@
       if (!stoped) {
         counter--;
         minutes = Math.floor(counter / 60);
-        console.log(minutes);
         seconds = counter % 60;
         updateTime();
         if (counter === 0) finish();
@@ -40,11 +38,9 @@
   function updateTime() {
     const degress = (counter * 360) / counterInitial;
 
-    if (degress === 0) {
-      progressStyle = `conic-gradient(#00aa51 360deg, #00aa51 0deg)`;
-    } else {
-      progressStyle = `conic-gradient(#9d0000 ${degress}deg, #010100 0deg)`;
-    }
+    progressStyle = degress === 0
+      ? `conic-gradient(#00aa51 360deg, #00aa51 0deg)`
+      : `conic-gradient(#9d0000 ${degress}deg, #010100 0deg)`;
 
     if (minutes < 10) minutes = "0" + minutes;
     if (seconds < 10) seconds = "0" + seconds;
@@ -107,59 +103,57 @@
 
   function validateNumber(value) {
     const numValue = Math.ceil(Number(value));
-    if (numValue > 60) {
-      return 60;
-    } else if (numValue < 0) {
-      return 0;
-    }
+    if (numValue > 60) return 60;
+    else if (numValue < 0) return 0;
     return numValue;
   }
 
   function validateWhenFocusOut(value) {
     const numValue = Math.ceil(Number(value));
-    if (numValue >= 0 && numValue < 10) {
-      return "0" + numValue;
-    }
-    return numValue;
+    return numValue >= 10 && numValue < 10 ? "0" + numValue : numValue;
   }
 
   function handleMinutesInputKeyUp(event) {
-    validateNumber(event);
+    minutesInputValue = validateNumber(event.target.value);
   }
 
   function handleMinutesInputFocusOut(event) {
-    validateWhenFocusOut(event);
+    minutesInputValue = validateWhenFocusOut(event.target.value);
   }
 
   function handleSecondsInputKeyUp(event) {
-    validateNumber(event);
+    secondsInputValue = validateNumber(event.target.value);
   }
 
   function handleSecondsInputFocusOut(event) {
-    validateWhenFocusOut(event);
+    secondsInputValue = validateWhenFocusOut(event.target.value);
   }
 </script>
 
 <style lang="scss">
-  @import 'src/styles/challenge01';
+  @import '/src/styles/challenge-01';
 </style>
 
 <section class="challenge">
-  <div class="progress">
+  <div class="progress" style="background-image: {progressStyle}">
     <div id="timer" class="timer">
       <div class="timer-container">
-        <span id="time" class="time">{minutes }:{seconds}</span>
+        <span id="time" class="time" style="display: {timeDisplay}">{minutes + ':' + seconds}</span>
         <div class="timer-input" style="display: {timerInputDisplay}">
-          <input bind:value={minutesInputValue} type="number" min="0" max="60">
+          <input bind:value={minutesInputValue} on:keyup={handleMinutesInputKeyUp} on:focusout={handleMinutesInputFocusOut} type="number" min="0" max="60"> 
           <span>:</span>
-          <input bind:value={secondsInputValue} type="number" min="0" max="60">
+          <input bind:value={secondsInputValue} on:keyup={handleSecondsInputKeyUp} on:focusout={handleSecondsInputFocusOut} type="number" min="0" max="60">
         </div>
       </div>
       <div class="buttons">
         <button on:click={handleStartClick} style="display: {btnStartDisplay}" class="start">Start</button>
         <button on:click={handleStopClick} style="display: {btnStopDisplay}" class="stop">{btnStopText}</button>
-        <div on:click={handleGearClick} style="display: {gearDisplay}" class="icon gear"></div>
-        <div on:click={handleCheckClick} style="display: {checkDisplay}" class="icon check"></div>
+        <div  style="display: {gearDisplay}" class="icon gear">
+          <button on:click={handleGearClick} class="gear"></button>
+        </div>
+        <div style="display: {checkDisplay}" class="icon check">
+          <button on:click={handleCheckClick} class="check"></button>
+        </div>
       </div>
     </div>
   </div>
