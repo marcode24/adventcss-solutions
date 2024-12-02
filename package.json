@@ -25,8 +25,8 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.3.1",
-    "@astrojs/svelte": "^4.0.4",
-    "astro": "^3.5.5",
+    "@astrojs/svelte": "^6.0.2",
+    "astro": "^4.16.16",
     "svelte": "^4.2.7",
     "typescript": "^5.2.2"
   },
