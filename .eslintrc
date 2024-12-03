@@ -25,6 +25,7 @@
     "import/first": "error",
     "import/newline-after-import": "error",
     "import/no-duplicates": "error",
+    "implicit-arrow-linebreak": "off",
     "no-multiple-empty-lines": [
       "error",
       {
@@ -46,11 +47,7 @@
   "overrides": [
     {
       "files": ["**/*.astro"],
-      "plugins": [
-        "@typescript-eslint",
-        "unused-imports",
-        "simple-import-sort"
-      ],
+      "plugins": ["@typescript-eslint", "unused-imports", "simple-import-sort"],
       "env": {
         // Enables global variables available in Astro components.
         "node": true,
