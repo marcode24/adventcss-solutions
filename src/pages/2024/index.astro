@@ -1,0 +1,26 @@
+---
+import Card from '@/components/Card.astro';
+import Layout from '@/layouts/Layout.astro';
+
+const CHALLENGES = [
+  {
+    title: 'Challenge 1',
+    description:
+      'For today’s challenge, we’ll build a photo gallery card, similar to Facebook',
+    href: '/2024/challenge-01',
+    image: 'images/2024/day-1.webp',
+  },
+];
+---
+
+<Layout title="2024 solutions">
+  <h3>2024 solutions</h3>
+  {CHALLENGES.map((challenge) => <Card {...challenge} />)}
+</Layout>
+
+<style>
+  h3 {
+    font-size: var(--fs-4);
+    margin-bottom: 1rem;
+  }
+</style>
