@@ -1,0 +1,31 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40rem;
+}
+
+.wrapper h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0 1rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.wrapper h1::before,
+.wrapper h1::after {
+  content: "";
+  height: 1px;
+  background-color: #000;
+  width: 80px;
+}
+
+.wrapper h1::before {
+  margin-right: 1rem;
+}
+
+.wrapper h1::after {
+  margin-left: 1rem;
+}
